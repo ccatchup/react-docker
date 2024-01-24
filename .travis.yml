@@ -5,18 +5,18 @@ services:
   - docker
 
 before_install:
-  - docker build -t stephengrider/docker-react -f Dockerfile.dev .
+  - docker build -t kubenaksang/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true stephengrider/docker-react npm run test
+  - docker run -e CI=true kubenaksang/docker-react npm run test
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "docker"
-  env: "docker-env"
-  bucket_name: "elasticbeanstalk-us-east-1-923445559289"
-  bucket_path: "docker"
+  region: "eu-north-1"
+  app: "frontend"
+  env: "frontend-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-730335523916"
+  bucket_path: "frontend"
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
